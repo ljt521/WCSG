@@ -1,0 +1,44 @@
+/**index.wxss**/
+
+page {
+  background: #eeeff1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.container, slideTab {
+  width: 100%;
+}
+
+.no-order {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding-top: 203rpx;
+  background-color: #f2f2f2;
+}
+
+.no-order-img {
+  width: 81rpx;
+  height: 96rpx;
+  margin-bottom: 31rpx;
+}
+
+.no-order .text {
+  font-size: 28rpx;
+  color: #999;
+  text-align: center;
+}
+
+.order-list {
+  width: 100%;
+}
+
+.lv-swiper {
+  width: calc(100% - 20rpx) !important;
+}

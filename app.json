@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/order/order",
+    "pages/report-form/report-form",
+    "components/order-list/order-list",
+    "pages/application-details/application-details"
+  ],
+  "usingComponents": {
+    "mp-icon": "./components/icon/icon"
+  },
+  "window": {
+    "backgroundColor": "#0094da",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0094da",
+    "navigationBarTitleText": "微创小程序",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "./assets/imgs/nav/cart-off.png",
+        "selectedIconPath": "./assets/imgs/nav/cart-on.png"
+      },
+      {
+        "pagePath": "pages/report-form/report-form",
+        "text": "报表",
+        "iconPath": "./assets/imgs/nav/my-off.png",
+        "selectedIconPath": "./assets/imgs/nav/my-on.png"
+      }
+    ],
+    "selectedColor": "#0094da"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

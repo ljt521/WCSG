@@ -1,0 +1,20 @@
+<view class="scroll-view-item" wx:for="{{orderList}}" wx:key="*this">
+  <view class="lv-outside">
+    <view class="lv-inside">
+      <view class="lv-top">
+        <text class="lv-top-title">{{item.title}}<text class="lv-top-margin">|</text>
+        <text>{{item.name}}</text></text>
+        <text class="lv-top-title-l" style="color: {{item.status == '长期寄存'? '#ec675e' : item.status == '待签到'? '#ff9f00' :'#0193dc'}}">{{item.status}}</text>
+      </view>
+      <view class="lv-bottom">
+        <view class="lv-bottom-l">
+          <view class="lv-bottom-title"><mp-icon icon="me" color="#888" size="{{18}}"></mp-icon>{{item.company}}</view>
+          <view class="lv-bottom-title"><mp-icon icon="location" color="#888" size="{{18}}"></mp-icon>{{item.Hospital}}</view>
+        </view>
+        <view class="lv-bottom-r">
+          <button bindtap="_orderClick" data-orderList="{{item}}" class="btn-1" type="primary" size="mini" plain="{{plain}}"> {{item.status === '待发货'? '发货' : '回收'}} </button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

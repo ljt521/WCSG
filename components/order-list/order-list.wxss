@@ -1,0 +1,83 @@
+.lv-outside {
+  padding: 20rpx 0 20rpx 20rpx;
+}
+
+.lv-outside, .lv-inside {
+  width: 100%;
+}
+
+.lv-inside {
+  height: 214rpx;
+  overflow: hidden;
+}
+
+.lv-top, .lv-bottom {
+  width: calc(100% - 20rpx);
+}
+
+.lv-top {
+  height: 80rpx;
+  background-color: #f7f8fa;
+  border-radius: 8rpx 8rpx 0 0;
+  padding: 0 20rpx;
+}
+
+.lv-bottom {
+  height: 134rpx;
+  background-color: #fff;
+  border-radius: 0 0 8rpx 8rpx;
+}
+
+.lv-top-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.lv-top-margin {
+  margin: 0 10rpx;
+}
+
+.lv-top-title-l, .lv-top-title {
+  line-height: 80rpx;
+}
+
+.lv-top-title-l {
+  float: right;
+  margin-right: 60rpx;
+  font-size: 24rpx;
+  /* color: #0193dc; */
+}
+
+.lv-bottom-l, .lv-bottom-r {
+  float: left;
+}
+
+.lv-bottom-l {
+  width: calc(100% - 120rpx);
+}
+
+.lv-bottom-r {
+  width: 120rpx;
+  line-height: 134rpx;
+}
+
+.lv-bottom-r .btn-1 {
+  width: 100rpx;
+  height: 48rpx;
+  font-size: 24rpx;
+  background-color: #0193da;
+}
+
+.lv-bottom-title {
+  line-height: 68rpx;
+  color: #888;
+  font-size: 24rpx;
+  padding-left: 16rpx;
+}
+
+.lv-bottom-title mp-icon {
+  position: relative;
+  top: -4rpx;
+  padding-right: 10rpx;
+}
