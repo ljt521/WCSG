@@ -17,3 +17,21 @@ const formatNumber = n => {
 module.exports = {
   formatTime: formatTime
 }
+
+function httpReq(url, method, data, success, fail) {
+  const path = `http://qa-srm-v500-api.jiuyisoft.com/` + url;
+  wx.request({
+    url: path,
+    header: {
+      'content-type': 'application/json',
+    },
+    method: method || 'GET',
+    data: data,
+    success(res) {
+      success(res);
+    },
+    fail(res) {
+      fail(res);
+    }
+  });
+}

@@ -3,7 +3,8 @@
     "pages/order/order",
     "pages/report-form/report-form",
     "components/order-list/order-list",
-    "pages/application-details/application-details"
+    "pages/application-details/application-details",
+    "pages/login/login"
   ],
   "usingComponents": {
     "mp-icon": "./components/icon/icon"
@@ -20,14 +21,14 @@
       {
         "pagePath": "pages/order/order",
         "text": "订单",
-        "iconPath": "./assets/imgs/nav/cart-off.png",
-        "selectedIconPath": "./assets/imgs/nav/cart-on.png"
+        "iconPath": "./assets/imgs/nav/order_n.png",
+        "selectedIconPath": "./assets/imgs/nav/order_s.png"
       },
       {
         "pagePath": "pages/report-form/report-form",
         "text": "报表",
-        "iconPath": "./assets/imgs/nav/my-off.png",
-        "selectedIconPath": "./assets/imgs/nav/my-on.png"
+        "iconPath": "./assets/imgs/nav/report_n.png",
+        "selectedIconPath": "./assets/imgs/nav/report_s.png"
       }
     ],
     "selectedColor": "#0094da"

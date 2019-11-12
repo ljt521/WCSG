@@ -1,2 +1,74 @@
-<!--pages/application-details/application-details.wxml-->
-<text>pages/application-details/application-details.wxml</text>
+<view class="wc_pannel_container mt_18">
+  <view class="wc_title_container wc_hr_b">
+    <view class="wc_title_left">
+      <text class="wc_title_info_flag"></text>
+      <text class="wc_title_text">基本信息</text>
+    </view>
+    <text class="c_0094da f_30">发送产品信息到邮箱</text>
+  </view>
+  <view class="wc_content_container">
+    <view class="wc_line_content">
+      <text class="wc_content_left">基本信息</text>
+      <text class="c_333">JSX201902010001</text>
+    </view>
+    <view class="wc_line_content">
+      <text class="wc_content_left">申请日期</text>
+      <text class="c_333">2019-02-13</text>
+    </view>
+    <view class="wc_line_content">
+      <text class="wc_content_left">申请类型</text>
+      <text class="c_333">正常订单</text>
+    </view>
+    <view class="wc_more_button">
+    <text>更多信息</text>
+    <text class="wc_arrow_down"></text>
+    </view>
+  </view>
+</view>
+<view class="wc_pannel_container">
+  <view class="wc_title_container wc_hr_b">
+    <view class="wc_title_left">
+      <text class="wc_title_info_flag"></text>
+      <text class="wc_title_text">KitNo列表</text>
+    </view>
+    <text class="c_0094da f_30">扫码发货</text>
+  </view>
+  <view class="wc_content_container">
+    <view class="wc_line_content">
+      <text class="wc_content_left">SHHJ-12/1</text>
+      <text class="wc_content_center">JSX201902010001</text>
+      <text class="wc_content_right">X3</text>
+    </view>
+    <view class="wc_line_content">
+      <text class="wc_content_left">SHHJ-12/1</text>
+      <text class="wc_content_center">JSX201902010001</text>
+      <text class="wc_content_right">X3</text>
+    </view>
+
+
+
+  </view>
+</view>
+<view class="wc_pannel_container">
+  <view class="wc_title_container wc_hr_b">
+    <view class="wc_title_left">
+      <text class="wc_title_info_flag"></text>
+      <text class="wc_title_text">发货列表</text>
+    </view>
+  </view>
+  <view class="wc_content_container">
+    <view class="wc_line_content">
+      <text class="wc_content_left">SHHJ-12/1</text>
+      <text class="wc_content_center">JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001</text>
+      <text class="wc_content_right c_0094da">删除</text>
+    </view>
+    <view class="wc_line_content">
+      <text class="wc_content_left">SHHJ-12/1</text>
+      <text class="wc_content_center">JSX201902010001</text>
+      <text class="wc_content_right c_0094da">删除</text>
+    </view>
+
+
+
+  </view>
+</view>

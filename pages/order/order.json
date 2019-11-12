@@ -2,6 +2,7 @@
   "backgroundColor": "#0094da",
   "onReachBottomDistance": 10,
   "navigationBarTitleText": "订单",
+  "navigationBarTextStyle": "white",
   "usingComponents": {
     "slideTab": "../../components/tabs/tabs",
     "orderList": "../../components/order-list/order-list"

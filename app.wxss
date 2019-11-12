@@ -1,4 +1,5 @@
 /**app.wxss**/
+
 .container {
   height: 100%;
   display: flex;
@@ -6,4 +7,182 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-} 
+}
+
+page {
+  background: #eeeff1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.p_10 {
+  padding: 10rpx;
+}
+
+.p_20 {
+  padding: 20rpx;
+}
+
+.p_24 {
+  padding: 24rpx;
+}
+.mb_18{
+  margin-bottom: 18rpx;
+}
+.mt_18{
+  margin-top: 18rpx;
+}
+
+.p_30 {
+  padding: 30rpx;
+}
+
+.f_11 {
+  font-size: 22rpx;
+}
+
+.f_12 {
+  font-size: 24rpx;
+}
+
+.f_13 {
+  font-size: 26rpx;
+}
+
+.f_14 {
+  font-size: 28rpx;
+}
+
+.f_30 {
+  font-size: 30rpx;
+}
+
+.c_0094da {
+  color: #0094da !important;
+}
+
+.c_333 {
+  color: #333;
+}
+
+.c_888 {
+  color: #888;
+}
+
+.c_ffa101 {
+  color: #ffa101;
+}
+
+.c_eb675b {
+  color: #eb675b;
+}
+
+.b_r {
+  border-radius: 8rpx;
+}
+
+.bgc_f7f8fa {
+  background-color: #f7f8fa;
+}
+
+.wc_pannel_container {
+  background: #fff;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-bottom: 18rpx;
+  border-radius: 12rpx;
+}
+
+.wc_title_container {
+  display: flex;
+  justify-content: space-between;
+  height: 84rpx;
+  padding: 0 24rpx;
+  line-height: 84rpx;
+  position: relative;
+}
+
+.wc_title_left {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 700;
+}
+
+.wc_title_info_flag {
+  position: relative;
+  width: 6rpx;
+  height: 33rpx;
+  background-color: rgba(0, 137, 215, 1);
+  display: inline-block;
+  top: 4rpx;
+  margin-right: 10rpx;
+}
+
+.wc_title_text {
+  font-size: 30rpx;
+  color: #323232;
+}
+
+.wc_hr_b {
+  border-bottom: 1px solid #eeeff1;
+}
+
+.wc_content_container {
+  margin: 28rpx 24rpx;
+  font-size: 24rpx;
+}
+
+.wc_line_content {
+  display: flex;
+}
+
+.wc_content_left {
+  width: 126rpx;
+  display: inline-block;
+  margin-bottom: 20rpx;
+  color: #888;
+}
+.wc_content_center {
+  width: calc(100% - 272rpx);
+  display: inline-block;
+  margin-bottom: 20rpx;
+  color: #333;
+  padding-left: 74rpx;
+}
+.wc_content_right{
+  width: 60rpx;
+  margin-right: 5rpx;
+  text-align: right;
+  color: #333;
+
+}
+
+.wc_more_button {
+  position: relative;
+  width: 176rpx;
+  height: 50rpx;
+  padding-right: 20rpx;
+  border-radius: 25rpx;
+  margin: auto;
+  border: 1rpx solid #eeeef1;
+  text-align: center;
+  color: #333;
+  line-height: 50rpx;
+  font-size: 24rpx;
+}
+
+.wc_arrow_down {
+  position: absolute;
+  right: 30rpx;
+  top: 25%;
+  width: 16rpx;
+  height: 16rpx;
+  border-top: 1rpx solid #888;
+  border-left: 1rpx solid #888;
+  transform: rotate(-135deg);
+}
+
+.h_80 {
+  height: 80rpx;
+}
