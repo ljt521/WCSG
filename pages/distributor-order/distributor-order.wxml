@@ -1,0 +1,27 @@
+<!--pages/distributor-order/distributor-order.wxml-->
+<view class="container">
+  <slideTab tList="{{statusType}}" bind:changeCurrent="swichNav" currentTab="{{currentType}}" />
+  <view style="height: 100rpx">
+  </view>
+  <view class="lv_scrf">
+    <view class="lv_scr">
+      <scrollTab tList="{{ips}}" bind:changeCurrent="swichTabNav" />
+    </view>
+  </view>
+</view>
+<swiper current="{{currentType}}" duration="{{duration}}" bindchange="bindChange" style="height: {{windowHeight}}px;">
+  <swiper-item class="lv-swiper" wx:for="{{statusType}}" wx:key="{{index}}">
+    <!-- <view class="no-order" hidden="{{item.listData.length ? true : false}}">
+      <image src="../../assets/imgs/no-order.png" class="no-order-img"></image>
+      <view class="text">暂无数据</view>
+    </view> -->
+    <scroll requesting="{{item.requesting}}" end="{{item.end}}" emptyShow="{{item.emptyShow}}" listCount="{{item.listData.length}}" hasTop="{{true}}" refresh-size="{{80}}" bind:refresh="refresh" bind:more="more">
+
+      <orderList noBtnName="{{noBtnName}}" orderList="{{item.listData}}" bind:clickOrder="orderBtnClick" bind:clickAllOrder="clickAllOrder"></orderList>
+
+      <!-- <view style="height: 10rpx"></view> -->
+    </scroll>
+  </swiper-item>
+</swiper>
+<view class="wc-add" bindtap="add">+</view>
+<mp-actionSheet bindactiontap="sheetBtnClick" show="{{showActionsheet}}" actions="{{actions}}"></mp-actionSheet>

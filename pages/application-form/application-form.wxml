@@ -1,0 +1,208 @@
+<!--膝关节常规订单-->
+<view class="container" wx:if='{{!showNextStep}}'>
+  <!-- 二级 tab-->
+  <slideTab tList="{{statusType}}" bind:changeCurrent="swichNav" currentTab="{{currentType}}"></slideTab>
+  <view style="margin-top:72rpx;width:100%;">
+    <!-- 赛选 -->
+    <view style="background:white;">
+      <!-- 产地 三级 -->
+      <view class="place_line">
+        <view class="place_left"> 产地</view>
+        <radio-group class="radio-group" bindchange="placeChange">
+          <radio class="radio" wx:for-items="{{places}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+            <view style="margin-right:30rpx;">
+              <dict-span dictCode="domestic" dictItemCode="{{item.name}}"></dict-span>
+            </view>
+          </radio>
+        </radio-group>
+      </view>
+
+      <view class="wc_line_hr" style="margin-bottom:0"></view>
+
+      <!-- 四级 -->
+      <view style="display:flex;background:white;">
+        <!-- left tab -->
+        <view class="tabs_left_container">
+          <view wx:for="{{level3}}" wx:item="item" wx:key="{{index}}" class="tabs_left_item {{itemIndex==index?'tabs_left_item_active':''}}" bindtap="clickItem" data-index="{{index}}">
+            <dict-span dictCode="level3" dictItemCode="{{item.name}}"></dict-span>
+          </view>
+        </view>
+
+        <!-- r tab
+        <view style="width:calc(100% - 180rpx);">
+          <view class="tabs_right_item" wx:for="{{level4}}" wx:item="item" wx:key="index">
+            <checkbox-group bindchange="clickItemLevel4" data-index="{{index}}">
+              <checkbox checked="{{item.checked}}" value="{{item.name}}" />
+              <dict-span dictCode="level4" dictItemCode="{{item.name}}"></dict-span>
+              <input-number bind:clickNumber="clickNumber" datail="{{item}}" data-index="{{index}}" number="{{item.count}}" min="1" class="input_number" disabled="{{!item.allowMultiple}}"></input-number>
+            </checkbox-group>
+          </view>
+        </view> -->
+
+        <!-- r tab -->
+        <view style="width:calc(100% - 180rpx);">
+          <view class="tabs_right_item" wx:for="{{level4}}" wx:item="item" wx:key="index">
+            <checkbox-group bindchange="clickItemLevel4" data-index="{{index}}" style="width:100%">
+              <checkbox style="width:54rpx;display:inline-block;" checked="{{item.checked}}" value="{{item.name}}" />
+              <view class="itemName">
+                <dict-span  dictCode="level4" dictItemCode="{{item.name}}"></dict-span>
+              </view>
+              <view style="display:inline-block;width:190rpx;">
+                <view style="display:flex;width:100%;text-align:center;height:46rpx">
+                  <view class="tabNumber" style="width:30%;border:1rpx solid #eee;border-right-color:white;line-height:22px;background:{{!item.allowMultiple?'#dddddd':''}}" data-field="{{item}}" bindtap="sub">-</view>
+                  <text style="width:40%;border:1rpx solid #eee;over-flow:hidden;line-height:16rpx;">
+                    1
+                  </text>
+                  <view class="tabNumber"  style="width:30%;border:1rpx solid #eee;border-left-color:white;line-height:22px;background:{{!item.allowMultiple?'#dddddd':''}}" data-field="{{item}}"  bindtap="add">+</view>
+                </view>
+              </view>
+
+            </checkbox-group>
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- --------------------------公共部分---------------------------------------------- -->
+    <mp-loading type="circle" style="margin-top:48rpx;" show="{{show}}" wx:if="{{show}}"></mp-loading>
+    <view class="no-order" wx:elif="{{(spDetails.length+prodDetails.length)==0}}">
+      <image src="../../assets/imgs/no-order.png" class="no-order-img"></image>
+      <view class="text">暂无数据</view>
+    </view>
+    <view class="mt_18" wx:if="{{spDetails.length}}">
+      <cell-collapse iscollapse ispadding ismargin isbackground isborderradius="{{false}}" isback2 bind:collapseChange="collapsespChange" data-toolListShow>
+        <view slot="title">
+          工具清单（{{spDetails.length}}）
+        </view>
+      </cell-collapse>
+      <view wx:if="{{spDetailsShow}}" style="background:white;margin:0 24rpx;padding-top:10rpx;">
+        <view wx:for="{{spDetails}}" wx:for-item="items" wx:key="name">
+          <mp-slideview buttons="{{slideButtons}}" bindbuttontap="slideButtonTap" data-index="{{index}}">
+            <view style="margin-bottom:10rpx;padding-left:12rpx;">
+              <text style="width:155rpx;display:inline-block;line-height:48rpx;">{{items.kitNo}}</text>
+              <text style="width:162rpx;display:inline-block;">{{items.kitNoDescription}}</text>
+              <input-number bind:clickNumber="spclickNumber" data-index="{{index}}" number="{{items.kitNoCount*1}}" disabled="{{false}}" min="0" class="input_number" style="margin-top:2rpx;"></input-number>
+            </view>
+          </mp-slideview>
+        </view>
+      </view>
+    </view>
+    <view class="mt_18" wx:if="{{prodDetails.length}}">
+      <cell-collapse iscollapse ismargin ispadding isbackground isback2 isborderradius="{{false}}" bind:collapseChange="collapseproChange" data-toolListShow>
+        <view slot="title">
+          产品清单（{{prodDetails.length}}）
+        </view>
+      </cell-collapse>
+      <view wx:if="{{prodDetailsShow}}" style="background:white;margin:0 24rpx;padding-top:10rpx;">
+        <view wx:for="{{prodDetails}}" wx:for-item="items" wx:key="name">
+          <mp-slideview buttons="{{slideButtons}}" bindbuttontap="slideButtonTap">
+            <view style="margin-bottom:10rpx;padding-left:12rpx;">
+              <text style="width:100rpx;display:inline-block;line-height:48rpx;">{{items.prodCode}}</text>
+              <text style="width:100rpx;display:inline-block;">{{items.prodDescription}}</text>
+              <text style="width:152rpx;display:inline-block;">{{items.prodType}}</text>
+              <input-number bind:clickNumber="prodclickNumber" data-index="{{index}}" number="{{items.prodCount*1}}" disabled="{{false}}" min="0" class="input_number" style="margin-top:2rpx;"></input-number>
+            </view>
+          </mp-slideview>
+        </view>
+      </view>
+    </view>
+
+
+    <button style="width:100%;background:white;position:fixed;bottom:0;color:#1995DB;" type="default" size="default" bindtap="nextStep" hover-class="other-button-hover"> 下一步：医院/收货信息 </button>
+  </view>
+</view>
+
+<!-- -------------------------- 分割线-------------------------- -->
+<view wx:else>
+  <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+
+  <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+    <cell-collapse iscollapse="{{false}}" ismargin="{{true}}" isbackground="{{false}}">
+      <view slot="title">
+        <text class="wc_title_info_flag" style="margin-left:14rpx;"></text> 医院信息
+      </view>
+    </cell-collapse>
+    <mp-cells>
+      <mp-cell title="医院名称" link show-error prop="hospitalName" ext-class="">
+        <!-- <view bindtap="bindHospitalChange" style="text-align:right;color: #888;">
+          {{hospital.name?hospital.name:'请选择'}}
+        </view> -->
+        <picker bindchange="bindHospitalChange" value="{{formData.hospital}}" range-key="name" range="{{hospitals}}">
+          <view style="text-align:right;">{{hospitals[hospitalIndex]['name']}}</view>
+          <view style="text-align:right;color: #888;" wx:if="{{!hospitalIndex}}">
+            请选择
+          </view>
+        </picker>
+      </mp-cell>
+      <mp-cell show-error prop="surgeon" title="主刀医生" ext-class="">
+        <input bindinput="formInputChange" value="{{formData.surgeon}}" class="weui-input" placeholder="请填写" />
+      </mp-cell>
+    </mp-cells>
+    <!-- 收货信息 -->
+    <cell-collapse iscollapse="{{false}}" ismargin="{{true}}" isbackground="{{false}}">
+      <view slot="title">
+        <text class="wc_title_info_flag" style="margin-left:14rpx;"></text> 收货信息
+      </view>
+    </cell-collapse>
+    <mp-cells>
+      <mp-cell show-error prop="idcard" title="经销商" ext-class="">
+        <input bindinput="formInputChange" disabled value="{{formData.organizationName}}" data-field="idcard" class="weui-input" placeholder="请填写" />
+      </mp-cell>
+      <mp-cell show-error prop="idcard" title="收货人" ext-class="">
+        <input bindinput="consigneeInputChange" value="{{formData.consignee}}" data-field="idcard" class="weui-input" placeholder="请填写" />
+      </mp-cell>
+      <mp-cell prop="mobile" title="收货电话">
+        <input bindinput="receivingPhoneInputChange" value="{{formData.receivingPhone}}" data-field="mobile" class="weui-input" placeholder="请输入手机号" />
+      </mp-cell>
+      <mp-cell prop="mobile" title="收货地址">
+        <input bindinput="addressInputChange" value="{{formData.receivingAddress}}" class="weui-input" placeholder="请输入收货地址" />
+      </mp-cell>
+      <!-- <mp-cell title="收货地址" link>
+        <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+          <view style="text-align:right;" wx:if="{{region.length}}">
+            {{region[0]}}，{{region[1]}}，{{region[2]}}
+          </view>
+          <view style="text-align:right;color: #888;" wx:if="{{!region.length}}">
+            请选择
+          </view>
+        </picker>
+      </mp-cell> -->
+      <view class="weui-cell" style="padding-bottom:68rpx;">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" value="{{formData.remark}}" bindblur="getaddressDetails" placeholder="请输入备注" auto-height="{{true}}" show-confirm-bar="{{flase}}" />
+        </view>
+      </view>
+    </mp-cells>
+
+
+    <view style="width:100%;background:white;position:fixed;bottom:0;color:#1995DB;display:flex;">
+      <button type="plain" defaultSize="mini" style="width:50%;" bindtap="backStep">上一步</button>
+      <button type="primary" bindtap="submitForm" defaultSize="mini" style="width:50%;">确定</button>
+    </view>
+
+
+
+
+
+  </mp-form>
+
+
+
+
+
+
+
+</view>

@@ -1,0 +1,144 @@
+/* pages/application-form/application-form.wxss */
+
+/**index.wxss**/
+
+page {
+  font-size: 26rpx;
+}
+
+.container, slideTab {
+  width: 100%;
+}
+
+/* 重写 checkbox 样式 */
+
+/* 未选中的 背景样式 */
+
+checkbox .wx-checkbox-input {
+  border-radius: 50%; /* 圆角 */
+  width: 40rpx; /* 背景的宽 */
+  height: 40rpx; /* 背景的高 */
+}
+
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  border: 1rpx solid #1995db;
+  background: #1995db;
+}
+
+radio .wx-radio-input {
+  border-radius: 50%; /* 圆角 */
+  width: 40rpx; /* 背景的宽 */
+  height: 40rpx; /* 背景的高 */
+}
+radio .wx-radio-input.wx-radio-input-checked {
+  border: 1rpx solid #1995db !important;
+  background: #1995db;
+}
+radio .wx-radio-input.wx-radio-input-checked::before {
+  border-radius: 50%; /* 圆角 */
+  width: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+  height: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+  line-height: 40rpx;
+  text-align: center;
+  font-size: 30rpx; /* 对勾大小 30rpx */
+  color: #fff; /* 对勾颜色 白色 */
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  border-radius: 50%; /* 圆角 */
+  width: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+  height: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+  line-height: 40rpx;
+  text-align: center;
+  font-size: 30rpx; /* 对勾大小 30rpx */
+  color: #fff; /* 对勾颜色 白色 */
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+.place_line {
+  background: white;
+  height: 98rpx;
+  line-height: 98rpx;
+  display: flex;
+}
+
+.place_left {
+  width: 160rpx;
+  padding-left: 24rpx;
+}
+
+.tabs_left {
+  width: 160rpx;
+  padding-left: 24rpx;
+}
+
+.tabs_left_container {
+  width: 160rpx;
+  background: #f7f8f9;
+  margin-right: 20rpx;
+}
+
+.tabs_left_item {
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 24rpx;
+}
+
+.tabs_right_item {
+  display: flex;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.tabs_left_item_active {
+  background: white;
+  color: #1995db;
+}
+
+.input_number {
+  width: 200rpx;
+  position: absolute;
+  right: 10rpx;
+  margin-top: 18rpx;
+}
+.picker{
+  margin-right: 64rpx !important;
+  text-align: right !important;
+}
+.weui-select .weui-select_in-select-after{
+  margin-right: 64rpx !important;
+  text-align: right !important;
+}
+
+.no-order {
+  width: 100%;
+  text-align: center;
+  padding-top: 203rpx;
+}
+
+.no-order-img {
+  width: 81rpx;
+  height: 96rpx;
+  margin-bottom: 31rpx;
+}
+
+.no-order .text {
+  font-size: 28rpx;
+  color: #999;
+  text-align: center;
+}
+.itemName{
+  display:inline-block;
+  width:calc(100% - 254rpx);
+}
+

@@ -1,2 +1,102 @@
-<!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<view class="lv_bg">
+  <!-- <image class='header-bg' src='../../assets/imgs/login_bg.jpg'></image> -->
+
+  <!-- login==false 注册 -->
+  <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+  <mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+  <mp-form id="form" rules="{{rules}}" models="{{formData}}" wx:if="{{!login}}">
+    <view class="lv_from">
+      <view class="lv_f_label">
+        <view class="lv_f_l">
+          <mp-icon class="lv_mp_icon" icon="me" color="#888" size="{{18}}"></mp-icon>
+          姓名
+        </view>
+        <view class="lv_f_r" prop="name">
+          <input class="weui-input" bindinput="inputChange" value="{{formData.name}}" data-field="name" auto-focus placeholder="请输入" />
+        </view>
+      </view>
+      <view class="lv_f_label">
+        <view class="lv_f_l">
+          <mp-icon class="lv_mp_icon" icon="cellphone" color="#888" size="{{18}}"></mp-icon>
+          手机
+        </view>
+        <view class="lv_f_r" prop="login">
+          <input class="weui-input" data-field="login" bindinput="inputChange" value="{{formData.login}}" auto-focus placeholder="请输入" />
+        </view>
+      </view>
+      <view class="lv_f_label">
+        <view class="lv_f_l">
+          <mp-icon class="lv_mp_icon" icon="me" color="#888" size="{{18}}"></mp-icon>
+          类型
+        </view>
+        <view class="lv_f_r lv_f_ro">
+          <radio-group class="radio-group" bindchange="radioChange">
+            <radio class="radio" value='0' checked="true">
+              <text style="margin-right:30rpx;">经销商</text>
+            </radio>
+            <radio class="radio" value="1">
+              <text style="margin-right:30rpx;">微创</text>
+            </radio>
+          </radio-group>
+        </view>
+      </view>
+      <view class="lv_f_label">
+        <view class="lv_f_l">
+          <mp-icon class="lv_mp_icon" icon="location" color="#888"></mp-icon>
+          邮箱
+        </view>
+        <view class="lv_f_r" prop="email">
+          <input class="weui-input" data-field="email" bindinput="inputChange" auto-focus placeholder="请输入" />
+        </view>
+      </view>
+      <!--当类型为微创时，显示-->
+      <view class="lv_f_label" wx:if='{{formData.userType==1}}'>
+        <view class="lv_f_l">
+          <mp-icon class="lv_mp_icon" icon="location" color="#888"></mp-icon>
+          所属部门
+        </view>
+        <view class="lv_f_r">
+          <input class="weui-input" auto-focus bindinput="inputChange" value="{{formData.mark2}}" data-field="mark2" placeholder="请输入" />
+        </view>
+      </view>
+      <view class="lv_f_label">
+        <view class="lv_f_l">
+          <mp-icon class="lv_mp_icon" icon="location" color="#888" size="{{18}}"></mp-icon>
+          所属组织
+        </view>
+        <view class="lv_f_r">
+          <input class="weui-input" value="{{formData.mark1}}" bindinput="inputChange" data-field="mark1" auto-focus placeholder="请输入" />
+        </view>
+      </view>
+      <view class="lv_f_label" style="border: none;">
+        <button bindtap="toRegisterUser" style="width: 100%;margin-top: 30rpx" type="primary">注册</button>
+      </view>
+    </view>
+  </mp-form>
+
+  <!-- login == true 登录 -->
+
+  <view class="lv_from" wx:if="{{login}}">
+    <view class="lv_f_label">
+      <view class="lv_f_l">
+        <mp-icon class="lv_mp_icon" icon="me" color="#888" size="{{18}}"></mp-icon>
+        账号
+      </view>
+      <view class="lv_f_r">
+        <input class="weui-input" style="text-align: left" bindinput="bindAccount" auto-focus placeholder="请输入账号" />
+      </view>
+    </view>
+    <view class="lv_f_label">
+      <view class="lv_f_l">
+        <mp-icon class="lv_mp_icon" icon="cellphone" color="#888" size="{{18}}"></mp-icon>
+        密码
+      </view>
+      <view class="lv_f_r">
+        <input class="weui-input" style="text-align: left" bindinput="bindPassword" password type="text" placeholder="请输入密码" />
+      </view>
+    </view>
+    <view class="lv_f_label" style="border: none;">
+      <button bindtap="toLogin" style="width: 100%;margin-top: 30rpx" type="primary">登录</button>
+    </view>
+  </view>
+</view>

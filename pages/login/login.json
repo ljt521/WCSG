@@ -1,3 +1,9 @@
 {
-  "usingComponents": {}
+  "backgroundColor": "#0094da",
+  "onReachBottomDistance": 10,
+  "navigationBarTitleText": "微创",
+  "usingComponents": {
+    "scrollTab": "../../components/scroll-tab/scroll-tab",
+    "mp-form": "../components/form/form"
+  }
 }

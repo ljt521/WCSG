@@ -1,0 +1,21 @@
+{
+  "backgroundColor": "#0094da",
+  "onReachBottomDistance": 10,
+  "navigationBarTitleText": "新建申请单",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "slideTab": "../../components/tabs/tabs",
+    "orderList": "../../components/order-list/order-list",
+    "mp-actionSheet": "../../components/actionsheet/actionsheet",
+    "mp-cells": "../components/cells/cells",
+    "mp-cell": "../components/cell/cell",
+    "mp-form": "../components/form/form",
+    "mp-toptips": "../components/toptips/toptips",
+    "mp-slideview": "../components/slideview/slideview",
+    "input-number": "../components/input-number/input-number",
+    "cell-collapse": "../components/cell-collapse/cell-collapse",
+    "mp-checkbox-group": "../../components/checkbox-group/checkbox-group",
+    "mp-checkbox": "../../components/checkbox/checkbox",
+    "scrollTab": "../../components/scroll-tab/scroll-tab"
+  }
+}

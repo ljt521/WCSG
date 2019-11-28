@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "city-picker": "../../components/city-picker/city-picker",
+    "mp-cells": "../components/cells/cells",
+    "mp-cell": "../components/cell/cell",
+    "mp-checkbox-group": "../../components/checkbox-group/checkbox-group",
+    "mp-checkbox": "../../components/checkbox/checkbox",
+    "mp-searchbar": "../components/searchbar/searchbar",
+    "search-history": "../components/common-search-and-history/common-search-and-history"
+  }
+}

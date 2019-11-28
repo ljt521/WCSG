@@ -1,0 +1,8 @@
+{
+  "backgroundColor": "#0094da",
+  "onReachBottomDistance": 10,
+  "navigationBarTitleText": "库存详细信息",
+  "usingComponents": {
+    "cell-collapse": "../components/cell-collapse/cell-collapse"
+  }
+}

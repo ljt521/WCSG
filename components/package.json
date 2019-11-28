@@ -1,7 +1,7 @@
 {
-    "name": "weui-miniprogram",
+    "name": "components",
     "version": "0.2.0",
     "description": "",
-    "author": "xushengni,tomylin,cunjinli,rockhou",
+    "author": "lvjt",
     "license": "MIT"
 }

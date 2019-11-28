@@ -27,6 +27,12 @@ Component({
   },
 
   methods: {
+    viewDetails: function (e) {
+      //自定义组件触发事件时，需要使用 triggerEvent 方法，指定事件名、detail对象和事件选项
+      this.triggerEvent('clickCurrent', {
+        detailData: 'detailData'
+      })
+    },
     onItemsChange() {
       this.setData({
         canvasData: this.data.canvasData
@@ -41,6 +47,7 @@ Component({
       this.setData({
         title: this.data.title,
       });
+      
 
     },
     onUnitChange() {

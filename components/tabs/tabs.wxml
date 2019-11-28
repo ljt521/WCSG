@@ -1,7 +1,23 @@
 <!-- 作者 吕俊涛 2019/11/9-->
 <scroll-view scroll-x="true" class="scroll-view-x" wx:if="{{!ttype || ttype==2}}">
   <view class="scroll-view-item" wx:for="{{tList}}" wx:key="*this">
-    <view class="{{currentTab==(index) ? 'on' : ''}}" bindtap="_swichNav" data-current="{{index}}">{{ !tname ? item.name : item[tname].name }}</view>
+    <view wx:if="{{tname}}" class="{{currentTab==(index) ? 'on' : ''}}" bindtap="_swichNav" data-current="{{index}}">
+    <view wx:if="{{item[tname].isDictCode}}">
+     <dict-span dictCode="{{item[tname].dictCode}}" dictItemCode="{{item[tname].dictItemCode}}"></dict-span>
+    </view>
+    <view wx:else>
+        {{item[tname].name}}
+    </view>
+    </view>
+    <view wx:else class="{{currentTab==(index) ? 'on' : ''}}" bindtap="_swichNav" data-current="{{index}}">
+        <view wx:if="{{item.isDictCode}}">
+     <dict-span dictCode="{{item.dictCode}}" dictItemCode="{{item.dictItemCode}}"></dict-span>
+    </view>
+    <view wx:else>
+      {{item.name}}
+    </view>
+
+    </view>
   </view>
 </scroll-view>
 <slot>

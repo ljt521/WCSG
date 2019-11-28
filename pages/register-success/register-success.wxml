@@ -1,0 +1,5 @@
+<!-- 作者 吕俊涛 -->
+
+<view>
+    <mp-msg type="success" title="注册成功" />
+</view>

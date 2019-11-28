@@ -1,0 +1,5 @@
+/* pages/register-success/register-success.wxss */
+
+page {
+  background-color: #fff
+}

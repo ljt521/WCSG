@@ -1,0 +1,45 @@
+/* components/cell-collapse/cell-collapse.wxss */
+.rotate_down{
+  transform: rotate(-90deg);
+}
+.rotate_up{
+  transform: rotate(90deg);
+}
+.wc_title_container{
+  display: flex;
+  justify-content: space-between;
+  line-height: 84rpx;
+  height: 84rpx;
+}
+.wc_title_info_flag {
+  position: relative;
+  width: 6rpx;
+  height: 33rpx;
+  background-color: rgba(0, 137, 215, 1);
+  display: inline-block;
+  top: 4rpx;
+  margin-right: 10rpx;
+}
+.wc_title_left{
+    display: flex;
+}
+.wc_title_text{
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+}
+.is_margin{
+  margin: 0 24rpx;
+}
+.is_padding{
+  padding: 0 24rpx;
+}
+.is_background{
+  background: white;
+}
+.is_border_radius{
+  border-radius: 12rpx;
+}
+.wc_hr_b {
+  border-bottom: 1px solid #eeeff1;
+}

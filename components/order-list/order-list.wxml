@@ -1,18 +1,29 @@
 <view class="scroll-view-item" wx:for="{{orderList}}" wx:key="*this">
-  <view class="lv-outside">
+  <view class="lv-outside" catchtap="_orderAllClick" data-orderList="{{item}}">
     <view class="lv-inside">
       <view class="lv-top">
-        <text class="lv-top-title">{{item.title}}<text class="lv-top-margin">|</text>
-        <text>{{item.name}}</text></text>
-        <text class="lv-top-title-l" style="color: {{item.status == '长期寄存'? '#ec675e' : item.status == '待签到'? '#ff9f00' :'#0193dc'}}">{{item.status}}</text>
+        <view class="lv-top-title">
+        <view style="display: inline-block;padding-left: 10rpx">{{item.documentNo}}</view>
+          <text class="lv-top-margin" wx:if="{{item.applyType === 'ZCDD'}}">|</text>
+          <view style="display: inline-block" wx:if="{{item.applyType === 'ZCDD'}}">
+            <dict-span dictCode="level1" dictItemCode="{{item.surgeryType}}" index="0"/> -
+            <dict-span dictCode="level2" dictItemCode="{{item.surgeryType}}" index="1"/>
+          </view>
+          <view class="lv-top-title-l" style="color: {{item.applyType == 'CQJS'? '#ec675e' : item.applicationStatus == 'waitSign' ? '#fea000' : '#0193dc'}}">
+            <dict-span wx:if="{{item.applyType === 'ZCDD'}}" dictCode="DDZT" dictItemCode="{{item.applicationStatus}}"/>
+            <dict-span wx:if="{{item.applyType === 'CQJS'}}" dictCode="JXSSSLX" dictItemCode="{{item.applyType}}"/>
+          </view>
+        </view>
       </view>
       <view class="lv-bottom">
         <view class="lv-bottom-l">
-          <view class="lv-bottom-title"><mp-icon icon="me" color="#888" size="{{18}}"></mp-icon>{{item.company}}</view>
-          <view class="lv-bottom-title"><mp-icon icon="location" color="#888" size="{{18}}"></mp-icon>{{item.Hospital}}</view>
+          <view class="lv-bottom-title">
+            <mp-icon icon="me" color="#888" size="{{18}}"></mp-icon>{{item.hospital.parentName || '-'}}</view>
+          <view class="lv-bottom-title">
+            <mp-icon icon="location" color="#888" size="{{18}}"></mp-icon>{{item.hospital.address || '-'}}</view>
         </view>
-        <view class="lv-bottom-r">
-          <button bindtap="_orderClick" data-orderList="{{item}}" class="btn-1" type="primary" size="mini" plain="{{plain}}"> {{item.status === '待发货'? '发货' : '回收'}} </button>
+        <view class="lv-bottom-r" wx:if="{{!noBtnName[item.applicationStatus]}}">
+          <button catchtap="_orderClick" data-orderList="{{item}}" class="btn-1" type="primary" size="mini" plain="{{plain}}"> {{orderBtnName[item.applicationStatus]}} </button>
         </view>
       </view>
     </view>

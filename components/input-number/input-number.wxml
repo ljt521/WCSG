@@ -1,0 +1,8 @@
+<!--components/add/add.wxml-->
+<view style="display:flex;width:100%;text-align:center;" >
+  <view data-tyName="'_sub'" style="width:30%;border:1rpx solid #eee;border-right-color:white;line-height:22px;background:{{disabled?'#dddddd':''}}" bindtap="_sub">-</view>
+  <view style="width:40%;border:1rpx solid #eee;over-flow:hidden;">
+     <input type="number" disabled="{{disabled}}" value="{{number}}" bindblur="getNumber" />
+  </view>
+  <view data-tyName="'_add'" style="width:30%;border:1rpx solid #eee;border-left-color:white;line-height:22px;background:{{disabled?'#dddddd':''}}" bindtap="_add">+</view>
+</view>

@@ -1,18 +1,20 @@
 <!--index.wxml-->
 <view class="container">
-  <slideTab tList="{{statusType}}" bind:changeCurrent="swichNav" currentTab="{{currentType}}">
-    <swiper current="{{currentType}}" duration="300" bindchange="bindChange" style="height: {{windowHeight-35}}px;margin-top:35px;">
-      <block>
-        <swiper-item class="lv-swiper" wx:for="{{list}}" wx:key="index">
-          <view class="no-order" hidden="{{orderList.length ? true : false}}">
-            <image src="../../assets/imgs/no-order.png" class="no-order-img"></image>
-            <view class="text">暂无订单</view>
-          </view>
-          <scroll-view scroll-y="true" class="order-list" scroll-with-animation="true" lower-threshold="1" bindscrolltolower="scrolltolower" style="height: {{windowHeight-35}}px;" hidden="{{orderList.length ? false : true}}">
-              <orderList orderList="{{orderList}}" bind:clickOrder="orderBtnClick"></orderList>
-          </scroll-view>
-        </swiper-item>
-      </block>
-    </swiper>
-  </slideTab>
+  <slideTab tList="{{statusType}}" bind:changeCurrent="swichNav" currentTab="{{currentType}}" />
 </view>
+<swiper current="{{currentType}}" duration="{{duration}}" bindchange="bindChange" style="height: {{windowHeight}}px;">
+  <swiper-item class="lv-swiper" wx:for="{{statusType}}" wx:key="{{index}}">
+    <!-- <view class="no-order" hidden="{{item.listData.length ? true : false}}">
+      <image src="../../assets/imgs/no-order.png" class="no-order-img"></image>
+      <view class="text">暂无订单</view>
+    </view> -->
+    <scroll requesting="{{item.requesting}}" end="{{item.end}}" emptyShow="{{item.emptyShow}}" listCount="{{item.listData.length}}" hasTop="{{true}}" refresh-size="{{80}}" bind:refresh="refresh" bind:more="more">
+      <orderList noBtnName="{{noBtnName}}" orderList="{{item.listData}}" bind:clickOrder="orderBtnClick" bind:clickAllOrder="clickAllOrder"></orderList>
+
+    </scroll>
+
+  </swiper-item>
+
+</swiper>
+<view wx:if="{{isHiddenSheet}}" class="wc-add" bindtap="add">+</view>
+<mp-actionSheet bindactiontap="sheetBtnClick" show="{{showActionsheet}}" actions="{{actions}}"></mp-actionSheet>

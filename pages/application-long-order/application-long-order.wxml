@@ -1,0 +1,88 @@
+<!--长期寄售订单新建-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-form id="form" rules="{{rules}}" models="{{formData}}">
+  <cell-collapse iscollapse="{{false}}" ismargin="{{true}}" isbackground="{{false}}">
+    <view slot="title">
+      <text class="wc_title_info_flag" style="margin-left:14rpx;"></text> 收货信息
+    </view>
+  </cell-collapse>
+  <mp-cells>
+    <mp-cell title="备货医院" link show-error prop="stockingHospital" ext-class="">
+      <!-- <view bindtap="bindHospitalChange" style="text-align:right;color: #888;">
+        {{hospital.name?hospital.name:'请选择'}}
+      </view> -->
+      <picker bindchange="bindHospitalChange" value="{{formData.stockingHospital}}" range-key="name" range="{{hospitals}}">
+        <view style="text-align:right;">{{hospitals[hospitalIndex]['name']}}</view>
+        <view style="text-align:right;color: #888;" wx:if="{{!hospitalIndex}}">
+          请选择
+        </view>
+      </picker>
+    </mp-cell>
+    <mp-cell title="经销商" ext-class="">
+      <input disabled value="{{formData.organizationName}}" class="weui-input" placeholder="请填写" />
+    </mp-cell>
+    <mp-cell title="收货人" ext-class="">
+      <input bindinput="consigneeInputChange" value="{{formData.consignee}}" class="weui-input" placeholder="请填写" />
+    </mp-cell>
+    <mp-cell title="收货电话" prop="receivingPhone" show-error>
+      <input bindinput="receivingPhoneInputChange" value="{{formData.receivingPhone}}" data-field="mobile" class="weui-input" placeholder="请输入手机号" />
+    </mp-cell>
+    <mp-cell prop="mobile" title="收货地址">
+      <input bindinput="addressInputChange" value="{{formData.receivingAddress}}" class="weui-input" placeholder="请输入收货地址" />
+    </mp-cell>
+    <!-- <mp-cell title="收货地址" link prop="receivingAddress">
+      <picker mode="region" prop="receivingAddress" bindchange="bindRegionChange" value="{{region}}">
+        <view style="text-align:right;" wx:if="{{region.length}}">
+          {{region[0]}}，{{region[1]}}，{{region[2]}}
+        </view>
+        <view style="text-align:right;color: #888;" wx:if="{{!region.length}}">
+          请选择
+        </view>
+      </picker>
+    </mp-cell> -->
+    <view class="weui-cell" style="padding-bottom:68rpx;">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" value="{{formData.remark}}" bindblur="getaddressDetails" placeholder="请输入备注" auto-height="{{true}}" show-confirm-bar="{{flase}}" />
+      </view>
+    </view>
+  </mp-cells>
+
+
+
+
+
+
+  <!-- 工具清单 -->
+  <cell-collapse iscollapse="{{false}}" ismargin="{{true}}" isbackground="{{false}}">
+    <view slot="title">
+      <text class="wc_title_info_flag" style="margin-left:14rpx;"></text> 工具清单
+    </view>
+    <view slot="footer">
+      <mp-icon bindtap="addCool" icon="add" color="#1995DB" size="{{18}}"></mp-icon>
+    </view>
+  </cell-collapse>
+  <view prop='listingtools' style="background:white;padding:20rpx;" wx:if="{{listingtools.length}}">
+    <view class="wc_content_container">
+      <view wx:for="{{listingtools}}" wx:item="item" wx:key="{{index}}">
+        <view style="margin-bottom:20rpx;">
+          <input bindinput="formBlurChange" data-index="{{index}}" style="width:155rpx;display:inline-block;line-height:48rpx;text-align:left;" value="{{item.kitNo}}" data-field="idcard" class="weui-input" placeholder="请填写" />
+          <text style="width:242rpx;display:inline-block;">{{item.kitNoDescription}}</text>
+          <input-number bind:clickNumber="clickNumber" data-index="{{index}}" number="{{item.kitNoCount}}" min="1" style="display:inline-block;width:168rpx;"></input-number>
+          <text style="position:absolute;right:20rpx;margin-top:6rpx;" bindtap="del" data-key="{{item.key}}" class="c_0094da">删除</text>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+
+
+
+
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+  </view>
+
+
+</mp-form>

@@ -1,3 +1,3 @@
 <view class="container">
-  <column-chart id="column-chart" canvasData="{{columnCanvasData}}" />
+  <column-chart id="column-chart" canvasData="{{columnCanvasData}}" bind:clickCurrent="goDetails" />
 </view>

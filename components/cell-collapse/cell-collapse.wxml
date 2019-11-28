@@ -1,0 +1,14 @@
+<!--components/cell-collapse/cell-collapse.wxml-->
+<view bindtap="_collapseChange" class="wc_title_container {{ismargin?'is_margin':''}} {{isbackground?'is_background':''}} {{isborderradius?'is_border_radius':''}} {{ispadding?'is_padding':''}} {{show?'wc_hr_b':''}}">
+  <view class="wc_title_left">
+    <view class="wc_title_text">
+      {{text}}
+      <slot name="title"></slot>
+    </view>
+  </view>
+  <view style="display:flex;">
+    <mp-icon wx:if="{{isback2}}" icon="back2" color="black" size="{{22}}" class="{{show?'rotate_up':'rotate_down'}}"></mp-icon>
+    <slot name="footer"></slot>
+
+  </view>
+</view>

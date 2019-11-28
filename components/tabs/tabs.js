@@ -6,6 +6,10 @@ Component({
       type: Array,
       value: []
     },
+    dictCodeList: {
+      type: Array,
+      value: []
+    },
     //当前tab index
     currentTab: {
       type: Number,

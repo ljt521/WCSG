@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "mp-cells": "../components/cells/cells",
+    "mp-cell": "../components/cell/cell",
+    "mp-form": "../components/form/form",
+    "mp-slideview": "../components/slideview/slideview",
+    "input-number": "../components/input-number/input-number",
+    "cell-collapse": "../components/cell-collapse/cell-collapse"
+  }
+}

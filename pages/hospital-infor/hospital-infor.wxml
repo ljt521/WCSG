@@ -1,0 +1,25 @@
+<!--pages/hospital-infor/hospital-infor.wxml-->
+<view>
+  <!-- <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar> -->
+  <search-history id="call-statistics-search" historyKey="{{'call-statistics-search-history'}}" class="search_container" bindonClickSubmit="onClickSearchSubmit" />
+  <view style="top:108rpx;position:fixed;width:100%;">
+    <mp-cells>
+      <mp-cell title="按区域搜索医院" link bindtap="showCityPicker">
+        <view bindtap="bindHospitalChange" style="text-align:right;color: #888;">
+          <text wx:if="city">{{city}}</text>
+          <text wx:else>请选择</text>
+        </view>
+      </mp-cell>
+    </mp-cells>
+  </view>
+  <view style="padding-top:216rpx;">
+    <mp-cells title="医院列表" wx:if="{{hospitalList.length}}">
+    <mp-checkbox-group prop="radio" multi="{{false}}" bindchange="getHispotalId">
+      <mp-checkbox wx:for="{{hospitalList}}" wx:key="value" label="{{item.name}}" value="{{index}}" checked="{{item.checked}}"></mp-checkbox>
+    </mp-checkbox-group>
+  </mp-cells>
+  </view>
+
+
+  <city-picker id="city-picker" value="{{cityPickerValue}}" isShow="{{cityPickerIsShow}}" bindsureclick="cityPickerOnSureClick" bindcancelclick="cityPickerOnCancelClick" />
+</view>

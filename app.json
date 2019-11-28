@@ -1,13 +1,27 @@
 {
   "pages": [
+    "pages/loading/loading",
+    "pages/login/login",
     "pages/order/order",
     "pages/report-form/report-form",
+    "pages/inventory-details/inventory-details",
     "components/order-list/order-list",
     "pages/application-details/application-details",
-    "pages/login/login"
+    "pages/distributor-details/distributor-details",
+    "pages/application-long-order/application-long-order",
+    "pages/application-form/application-form",
+    "pages/distributor-order/distributor-order",
+    "components/dict-span/dict-span",
+    "pages/register-success/register-success",
+    "pages/hospital-infor/hospital-infor",
+    "pages/order-details/order-details"
   ],
   "usingComponents": {
-    "mp-icon": "./components/icon/icon"
+    "mp-icon": "./components/icon/icon",
+    "dict-span": "./components/dict-span/dict-span",
+    "mp-loading": "../components/loading/loading",
+    "mp-toptips": "./components/toptips/toptips",
+    "mp-dialog": "./components/dialog/dialog"
   },
   "window": {
     "backgroundColor": "#0094da",

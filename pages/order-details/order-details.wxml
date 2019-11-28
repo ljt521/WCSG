@@ -1,0 +1,148 @@
+<mp-toptips msg="{{info}}" type="info" show="{{info}}"></mp-toptips>
+<view class="wc_pannel_container mt_18">
+  <view class="wc_title_container wc_hr_b">
+    <view class="wc_title_left">
+      <text class="wc_title_info_flag"></text>
+      <text class="wc_title_text">基本信息</text>
+    </view>
+    <!-- <text class="c_0094da f_30">发送产品信息到邮箱</text> -->
+  </view>
+  <view class="wc_content_container" wx:if="{{orderDetails}}">
+    <view class="wc_line_content">
+      <text class="wc_content_left">单据号</text>
+      <text class="c_333">{{orderDetails.documentNo}}</text>
+    </view>
+    <view class="wc_line_content">
+      <text class="wc_content_left">单据日期</text>
+      <text class="c_333">{{orderDetails.documentTime}}</text>
+    </view>
+    <view class="wc_line_content">
+      <text class="wc_content_left">单据类型</text>
+      <view class="c_333">
+        <dict-span dictCode="JXSSSLX" dictItemCode="{{orderDetails.applyType}}"></dict-span>
+      </view>
+    </view>
+    <view hidden="{{showFlag && orderDetails}}">
+      <view class="wc_line_content">
+        <text class="wc_content_left">手术类型</text>
+        <view class="c_333">
+          <dict-span dictCode="level1" dictItemCode="{{orderDetails.surgeryType}}" index="0"></dict-span> -
+          <dict-span dictCode="level2" dictItemCode="{{orderDetails.surgeryType}}" index="1"></dict-span>
+        </view>
+      </view>
+      <view class="wc_line_content">
+        <text class="wc_content_left">经销商</text>
+        <text class="c_333">{{orderDetails.organizationId}}</text>
+      </view>
+      <view class="wc_line_content">
+        <text class="wc_content_left">收货人</text>
+        <text class="c_333">{{orderDetails.consignee}}</text>
+      </view>
+      <view class="wc_line_content">
+        <text class="wc_content_left">收货电话</text>
+        <text class="c_333">{{orderDetails.receivingPhone}}</text>
+      </view>
+      <view class="wc_line_content">
+        <text class="wc_content_left">收货地址</text>
+        <text class="c_333">{{orderDetails.receivingAddress}}</text>
+      </view>
+      <view class="wc_line_content">
+        <text class="wc_content_left">手术医院</text>
+        <text class="c_333">{{orderDetails.hospital.parentName}}</text>
+      </view>
+      <view class="wc_line_content">
+        <text class="wc_content_left">主刀医师</text>
+        <text class="c_333">{{orderDetails.surgeon}}</text>
+      </view>
+      <view class="wc_line_content">
+        <text class="wc_content_left">备注</text>
+        <text class="c_333">{{orderDetails.remark || '-'}}</text>
+      </view>
+    </view>
+    <view class="wc_more_button" bindtap="showMore">
+      <text>{{showFlag?"更多信息":"收起"}}</text>
+      <text class="{{showFlag? 'wc_arrow_down' : 'wc_arrow_up'}}"></text>
+    </view>
+  </view>
+</view>
+<!-- KitNo列表 listingtools -->
+<view class="wc_pannel_container">
+  <view class="wc_title_container wc_hr_b">
+    <view class="wc_title_left">
+      <text class="wc_title_info_flag"></text>
+      <text class="wc_title_text">KitNo列表</text>
+    </view>
+  </view>
+
+  <view class="wc_content_container">
+    <view class="wc_line_content" wx:for="{{orderDetails.listingtools}}" wx:for-item="itemName" wx:key="index">
+      <text class="wc_content_left">{{itemName.toolsNo}}</text>
+      <text class="wc_content_center">{{itemName.toolsName}}</text>
+      <text class="wc_content_right">X{{itemName.toolsCount}}</text>
+    </view>
+    <view style="text-align: center" wx:if="{{orderDetails.listingtools.length == 0}}">
+      无数据
+    </view>
+  </view>
+</view>
+
+<!-- 产品列表 listingProducts -->
+<view class="wc_pannel_container">
+  <view class="wc_title_container wc_hr_b">
+    <view class="wc_title_left">
+      <text class="wc_title_info_flag"></text>
+      <text class="wc_title_text">产品列表</text>
+    </view>
+  </view>
+
+  <view class="wc_content_container">
+    <view class="wc_line_content" wx:for="{{orderDetails.listingProducts}}" wx:for-item="itemName" wx:key="index">
+      <text class="wc_content_left">{{itemName.productName}}</text>
+      <text class="wc_content_center">{{itemName.productType}}</text>
+      <text class="wc_content_right">X{{itemName.productCount}}</text>
+    </view>
+    <view style="text-align: center" wx:if="{{orderDetails.listingProducts.length == 0}}">
+      无数据
+    </view>
+  </view>
+</view>
+
+<!-- 实际发货列表 actuallyDeliveries -->
+<view class="wc_pannel_container" wx:if="{{showActuallyDeliveries[orderDetails.applicationStatus]}}">
+  <view class="wc_title_container wc_hr_b">
+    <view class="wc_title_left">
+      <text class="wc_title_info_flag"></text>
+      <text class="wc_title_text">实际发货列表</text>
+    </view>
+  </view>
+
+  <view class="wc_content_container">
+    <view class="wc_line_content" wx:for="{{orderDetails.actuallyDeliveries}}" wx:for-item="itemName" wx:key="index">
+      <text class="wc_content_left">{{itemName.actuallyToolsCode}}</text>
+      <text class="wc_content_center">{{itemName.actuallyToolsDescription}}</text>
+    </view>
+    <view style="text-align: center" wx:if="{{orderDetails.actuallyDeliveries.length == 0}}">
+      无数据
+    </view>
+  </view>
+</view>
+
+<!-- 回收列表 recyclingListings -->
+<view class="wc_pannel_container" wx:if="{{orderDetails.applicationStatus == 'complete'}}">
+  <view class="wc_title_container wc_hr_b">
+    <view class="wc_title_left">
+      <text class="wc_title_info_flag"></text>
+      <text class="wc_title_text">回收列表</text>
+    </view>
+  </view>
+
+  <view class="wc_content_container">
+    <view class="wc_line_content" wx:for="{{orderDetails.recyclingListings}}" wx:for-item="itemName" wx:key="index">
+      <text class="wc_content_left">{{itemName.recyclingToolsCode}}</text>
+      <text class="wc_content_center">{{itemName.recyclingToolsDescription}}</text>
+    </view>
+    <view style="text-align: center" wx:if="{{orderDetails.recyclingListings.length == 0}}">
+      无数据
+    </view>
+  </view>
+</view>

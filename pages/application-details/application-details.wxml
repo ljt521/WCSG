@@ -1,3 +1,4 @@
+<mp-toptips msg="{{info}}" type="info" show="{{info}}"></mp-toptips>
 <view class="wc_pannel_container mt_18">
   <view class="wc_title_container wc_hr_b">
     <view class="wc_title_left">
@@ -6,22 +7,61 @@
     </view>
     <text class="c_0094da f_30">发送产品信息到邮箱</text>
   </view>
-  <view class="wc_content_container">
+  <view class="wc_content_container" wx:if="{{orderDetails}}">
     <view class="wc_line_content">
-      <text class="wc_content_left">基本信息</text>
-      <text class="c_333">JSX201902010001</text>
+      <text class="wc_content_left">单据号</text>
+      <text class="c_333">{{orderDetails.documentNo}}</text>
     </view>
     <view class="wc_line_content">
-      <text class="wc_content_left">申请日期</text>
-      <text class="c_333">2019-02-13</text>
+      <text class="wc_content_left">单据日期</text>
+      <text class="c_333">{{orderDetails.documentTime}}</text>
     </view>
     <view class="wc_line_content">
-      <text class="wc_content_left">申请类型</text>
-      <text class="c_333">正常订单</text>
+      <text class="wc_content_left">单据类型</text>
+      <view class="c_333">
+        <dict-span dictCode="JXSSSLX" dictItemCode="{{orderDetails.applyType}}"></dict-span>
+      </view>
     </view>
-    <view class="wc_more_button">
-    <text>更多信息</text>
-    <text class="wc_arrow_down"></text>
+    <view hidden="{{showFlag && orderDetails}}">
+      <view class="wc_line_content">
+        <text class="wc_content_left">手术类型</text>
+        <view class="c_333">
+          <dict-span dictCode="level1" dictItemCode="{{orderDetails.surgeryType}}" index="0"></dict-span> -
+          <dict-span dictCode="level2" dictItemCode="{{orderDetails.surgeryType}}" index="1"></dict-span>
+        </view>
+      </view>
+      <view class="wc_line_content">
+        <text class="wc_content_left">经销商</text>
+        <text class="c_333">{{orderDetails.organizationId}}</text>
+      </view>
+      <view class="wc_line_content">
+        <text class="wc_content_left">收货人</text>
+        <text class="c_333">{{orderDetails.consignee}}</text>
+      </view>
+      <view class="wc_line_content">
+        <text class="wc_content_left">收货电话</text>
+        <text class="c_333">{{orderDetails.receivingPhone}}</text>
+      </view>
+      <view class="wc_line_content">
+        <text class="wc_content_left">收货地址</text>
+        <text class="c_333">{{orderDetails.receivingAddress}}</text>
+      </view>
+      <view class="wc_line_content">
+        <text class="wc_content_left">手术医院</text>
+        <text class="c_333">{{orderDetails.hospital.parentName}}</text>
+      </view>
+      <view class="wc_line_content">
+        <text class="wc_content_left">主刀医师</text>
+        <text class="c_333">{{orderDetails.surgeon}}</text>
+      </view>
+      <view class="wc_line_content">
+        <text class="wc_content_left">备注</text>
+        <text class="c_333">{{orderDetails.remark || '-'}}</text>
+      </view>
+    </view>
+    <view class="wc_more_button" bindtap="showMore">
+      <text>{{showFlag?"更多信息":"收起"}}</text>
+      <text class="{{showFlag? 'wc_arrow_down' : 'wc_arrow_up'}}"></text>
     </view>
   </view>
 </view>
@@ -29,46 +69,72 @@
   <view class="wc_title_container wc_hr_b">
     <view class="wc_title_left">
       <text class="wc_title_info_flag"></text>
-      <text class="wc_title_text">KitNo列表</text>
+      <text class="wc_title_text">{{orderDetails.applicationStatus=='waitDelivery'? 'KitNo列表' : '发货列表'}}</text>
     </view>
-    <text class="c_0094da f_30">扫码发货</text>
+    <text bindtap="scanClick" class="c_0094da f_30">{{orderDetails.applicationStatus=='waitDelivery'? '扫码发货':'扫码回收'}}</text>
   </view>
-  <view class="wc_content_container">
-    <view class="wc_line_content">
-      <text class="wc_content_left">SHHJ-12/1</text>
-      <text class="wc_content_center">JSX201902010001</text>
-      <text class="wc_content_right">X3</text>
+  <!-- // 发货 -->
+  <view class="wc_content_container" wx:if="{{orderDetails.applicationStatus=='waitDelivery'}}">
+    <view class="wc_line_content" wx:for="{{orderDetails.listingtools}}" wx:for-item="itemName" wx:key="index">
+      <text class="wc_content_left">{{itemName.toolsNo}}</text>
+      <text class="wc_content_center">{{itemName.toolsName}}</text>
+      <text class="wc_content_right">X{{itemName.toolsCount}}</text>
     </view>
-    <view class="wc_line_content">
-      <text class="wc_content_left">SHHJ-12/1</text>
-      <text class="wc_content_center">JSX201902010001</text>
-      <text class="wc_content_right">X3</text>
+    <view style="text-align: center" wx:if="{{orderDetails.listingtools.length == 0}}">
+      无数据
     </view>
-
-
-
+  </view>
+  <!-- // 回收 -->
+  <view class="wc_content_container" wx:if="{{orderDetails.applicationStatus!='waitDelivery'}}">
+    <view class="wc_line_content" wx:for="{{orderDetails.actuallyDeliveries}}" wx:for-item="itemName" wx:key="index">
+      <text class="wc_content_left">{{itemName.actuallyToolsCode}}</text>
+      <text class="wc_content_center">{{itemName.actuallyToolsDescription}}</text>
+    </view>
+    <view style="text-align: center" wx:if="{{orderDetails.actuallyDeliveries.length == 0}}">
+      无数据
+    </view>
   </view>
 </view>
 <view class="wc_pannel_container">
   <view class="wc_title_container wc_hr_b">
     <view class="wc_title_left">
       <text class="wc_title_info_flag"></text>
-      <text class="wc_title_text">发货列表</text>
+      <text class="wc_title_text">{{orderDetails.applicationStatus=='waitDelivery'? '发货列表' : '回收列表'}}</text>
     </view>
   </view>
-  <view class="wc_content_container">
-    <view class="wc_line_content">
-      <text class="wc_content_left">SHHJ-12/1</text>
-      <text class="wc_content_center">JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001JSX201902010001</text>
-      <text class="wc_content_right c_0094da">删除</text>
+  <!-- // 发货 -->
+  <view class="wc_content_container" wx:if="{{orderDetails.applicationStatus=='waitDelivery'}}">
+    <view class="wc_line_content" wx:for="{{orderDetails.actuallyDeliveries}}" wx:for-item="itemName" wx:key="index">
+      <text class="wc_content_left">{{itemName.actuallyToolsCode}}</text>
+      <text class="wc_content_center">{{itemName.actuallyToolsDescription}}</text>
+      <text bindtap="deleteList" data-index="{{index}}" class="wc_content_right c_0094da">删除</text>
     </view>
-    <view class="wc_line_content">
-      <text class="wc_content_left">SHHJ-12/1</text>
-      <text class="wc_content_center">JSX201902010001</text>
-      <text class="wc_content_right c_0094da">删除</text>
+    <view style="text-align: center" wx:if="{{orderDetails.actuallyDeliveries.length == 0}}">
+      无数据
     </view>
-
-
-
+  </view>
+  <!-- // 回收 -->
+  <view class="wc_content_container" wx:if="{{orderDetails.applicationStatus!='waitDelivery'}}">
+    <view class="wc_line_content" wx:for="{{orderDetails.recyclingListings}}" wx:for-item="itemName" wx:key="index">
+      <text class="wc_content_left">{{itemName.recyclingToolsCode}}</text>
+      <text class="wc_content_center">{{itemName.recyclingToolsDescription}}</text>
+      <text bindtap="deleteList" data-index="{{index}}" class="wc_content_right c_0094da">删除</text>
+    </view>
+    <view style="text-align: center" wx:if="{{orderDetails.recyclingListings.length == 0}}">
+      无数据
+    </view>
   </view>
 </view>
+<view style="padding： none" class="lv_con">
+</view>
+
+<mp-dialog title="发货提示" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
+  <view>kitNo列表与发货列表中的数据</view>
+  <view>不一致，是否发货？</view>
+</mp-dialog>
+
+
+<mp-dialog title="回收提示" show="{{showOneButtonDialog}}" bindbuttontap="tapOneDialogButton" buttons="{{buttons}}">
+  <view>是否确认回收？</view>
+</mp-dialog>
+<view bindtap="confirmShipment" class="lv_bt_btn">{{orderDetails.applicationStatus=='waitDelivery'? '确认发货':'确认回收'}}</view>

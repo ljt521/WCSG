@@ -1,0 +1,3 @@
+<!--components/dict-span/dict-span.wxml-->
+
+<text>{{message}}</text>

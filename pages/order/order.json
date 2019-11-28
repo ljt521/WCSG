@@ -5,6 +5,8 @@
   "navigationBarTextStyle": "white",
   "usingComponents": {
     "slideTab": "../../components/tabs/tabs",
-    "orderList": "../../components/order-list/order-list"
+    "orderList": "../../components/order-list/order-list",
+    "mp-actionSheet": "../../components/actionsheet/actionsheet",
+    "scroll": "../../components/scroll/index"
   }
 }

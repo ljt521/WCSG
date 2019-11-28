@@ -91,6 +91,11 @@ Page({
 
     this.setData(updateData);
   },
+  goDetails(e){
+    wx.navigateTo({
+      url: '../inventory-details/inventory-details'　　 // 页面 明细
+    })
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

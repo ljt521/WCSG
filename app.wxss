@@ -1,4 +1,5 @@
 /**app.wxss**/
+@import './components/weui-wxss/dist/style/weui.wxss';
 
 .container {
   height: 100%;
@@ -182,7 +183,49 @@ page {
   border-left: 1rpx solid #888;
   transform: rotate(-135deg);
 }
+.wc_arrow_up {
+  position: absolute;
+  right: 30rpx;
+  top: 40%;
+  width: 16rpx;
+  height: 16rpx;
+  border-top: 1rpx solid #888;
+  border-left: 1rpx solid #888;
+  transform: rotate(45deg);
+}
 
 .h_80 {
   height: 80rpx;
+}
+.wc_line_hr{
+  height:12rpx;border-bottom:1rpx solid #eee;margin-bottom:26rpx;
+}
+.wc_line_1hr{
+  height:1rpx;border-bottom:1rpx solid #eee;
+}
+.rotate_down{
+  transform: rotate(-90deg);
+}
+.rotate_up{
+  transform: rotate(90deg);
+}
+.gray_container{
+  background:#f7f8fa ; 
+  border-top-left-radius: 12rpx;
+  border-top-right-radius: 12rpx;
+  display: flex;
+  justify-content: space-between;
+  height: 84rpx;
+  padding: 0 24rpx;
+  line-height: 84rpx;
+  position: relative;
+}
+.weui-actionsheet__cell {
+  font-size: 26rpx !important;
+}
+.weui-cell{
+  font-size: 26rpx;
+}
+.weui-input{
+  text-align: right;
 }

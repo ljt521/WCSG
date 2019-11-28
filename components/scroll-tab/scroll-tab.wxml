@@ -1,0 +1,9 @@
+<scroll-view scroll-x="true" class="ip_tab_comtainer">
+  <view class="ip_tab_comtainer_padd"></view>
+  <block wx:for="{{tList}}" wx:for-item="ip" wx:key="{{ip.showSort}}">
+    <view class="{{ip.isSelect?'ip_tab_item_s':'ip_tab_item_n'}}" bindtap="_onIpItemClick" wx:key="{{ip.showSort}}" data-item="{{ip}}">
+      {{ip.value}}
+    </view>
+  </block>
+  <view class="ip_tab_comtainer_padd"></view>
+</scroll-view>

@@ -1,0 +1,11 @@
+/* pages/hospital-infor/hospital-infor.wxss */
+
+.search_container{
+  position: fixed;
+  width: 100%;
+  /*悬停关键样式*/
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: #fff;
+}

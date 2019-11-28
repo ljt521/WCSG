@@ -1,0 +1,66 @@
+<cell-collapse iscollapse="{{false}}" ismargin="{{true}}" isbackground="{{false}}">
+  <view slot="title">
+    <text class="wc_title_info_flag"></text> 库存统计-库存量
+  </view>
+  <view slot="footer">
+    <view class="wc_more_button" style="background:#fff;margin-top:16rpx;">
+      <text>选择分库</text>
+      <text class="wc_arrow_down"></text>
+    </view>
+  </view>
+</cell-collapse>
+
+<view class="wc_pannel_container mt_18">
+  <view class="wc_hr_b gray_container">
+    <view class="wc_title_left">
+      <text class="wc_title_text">分库名称</text>
+    </view>
+    <mp-icon bindtap="showMore" icon="back2" color="{{showItem?'black':'#0097db'}}" size="{{18}}" class="{{showItem?'rotate_up':'rotate_down'}}"></mp-icon>
+  </view>
+  <view class="wc_content_container">
+    <view class="wc_line_content">
+      <text class="wc_content_left">SHHJ-12/1</text>
+      <text class="wc_content_center">JSX201902010001</text>
+      <text class="wc_content_right">X3</text>
+    </view>
+    <view class="wc_line_content">
+      <text class="wc_content_left">SHHJ-12/1</text>
+      <text class="wc_content_center">JSX201902010001</text>
+    </view>
+    <view wx:if='{{showItem}}'>
+      <view class="wc_line_hr"></view>
+      <view class="wc_line_content">
+        <text class="wc_content_left">SHHJ-12/1</text>
+        <text class="wc_content_center">JSX201902010001</text>
+        <text class="wc_content_right">X3</text>
+      </view>
+      <view class="wc_line_content">
+        <text class="wc_content_left">SHHJ-12/1</text>
+        <text class="wc_content_center">JSX201902010001</text>
+      </view>
+    </view>
+
+
+  </view>
+</view>
+<view class="wc_pannel_container">
+  <view class="gray_container wc_hr_b">
+    <view class="wc_title_left">
+      <text class="wc_title_text">分库名称</text>
+    </view>
+    <mp-icon icon="back2" color="black" size="{{18}}" style=" transform: rotate(90deg);"></mp-icon>
+  </view>
+  <view class="wc_content_container">
+    <view class="wc_line_content">
+      <text class="wc_content_left">SHHJ-12/1</text>
+      <text class="wc_content_center">JSX201902010001</text>
+      <text class="wc_content_right">X3</text>
+    </view>
+    <view class="wc_line_content">
+      <text class="wc_content_left">SHHJ-12/1</text>
+      <text class="wc_content_center">JSX201902010001</text>
+    </view>
+    <!-- <view class="wc_line_hr"></view> -->
+
+  </view>
+</view>
